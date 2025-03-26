@@ -1,31 +1,25 @@
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {
-    "DeploymentID": {
-      "type": "string"
-    }
-  },
-
+  "parameters": {},
   "variables": {
     "AxoniusPortal": "https://training-demo.on.axonius.com/",
     "AxoniusUserName": "admin",
     "AxoniusPassword": "admin"
-
   },
-    "resources": [],
+  "resources": [],
   "outputs": {
-    "Axonius Portal": {
+    "AxoniusPortal": {
       "type": "String",
       "value": "[variables('AxoniusPortal')]"
     },
-    "Axonius UserName": {
+    "AxoniusUserName": {
       "type": "String",
       "value": "[variables('AxoniusUserName')]"
     },
-    "Axonius Password": {
+    "AxoniusPassword": {
       "type": "String",
       "value": "[variables('AxoniusPassword')]"
     }
-  } 
+  }
 }

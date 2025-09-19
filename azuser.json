@@ -1,0 +1,12 @@
+{
+  "Name": "Reader Role Assigner",
+  "IsCustom": true,
+  "Description": "Can create RBAC assignments, but will be restricted via assignment condition to Reader only",
+  "Actions": [
+    "Microsoft.Authorization/roleAssignments/read",
+    "Microsoft.Authorization/roleAssignments/write"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": []
+}

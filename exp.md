@@ -1,3 +1,97 @@
+<style>
+  @import url("https://d3a2yuhvc71l40.cloudfront.net/lab.css");
+     /* =========
+       DEFAULT (NOT Resources tab):
+       - Hide VM + resizer
+       - Give guide 100% width
+       ========= */
+    .vm-environment .main-section:not(:has(#link_5 a.active-tab)):not(:has(#link_5-dup a.active-tab)) app-vm,
+    .vm-environment .main-section:not(:has(#link_5 a.active-tab)):not(:has(#link_5-dup a.active-tab)) .resizer {
+      display: none !important;
+    }
+    
+    .vm-environment .main-section:not(:has(#link_5 a.active-tab)):not(:has(#link_5-dup a.active-tab)) #guideBlock {
+      width: 100% !important;
+      flex: 1 1 auto !important;
+    }
+    
+    
+    /* =========
+       RESOURCES tab only:
+       - Show VM on the RIGHT
+       - Guide/controls on the LEFT
+       - Keep the slider working
+       ========= */
+    
+    /* Turn the main area into a flex row, but reverse visually so:
+       Left = guideBlock, middle = resizer, right = VM
+       (DOM order stays the same, so the resizer JS still works) */
+    .vm-environment .main-section:has(#link_5 a.active-tab),
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) {
+      display: flex !important;
+      flex-direction: row-reverse !important;
+      align-items: stretch !important;
+    }
+    
+    /* Make sure VM + resizer are visible on Resources */
+    .vm-environment .main-section:has(#link_5 a.active-tab) app-vm,
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) app-vm,
+    .vm-environment .main-section:has(#link_5 a.active-tab) .resizer,
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) .resizer {
+      display: block !important;
+    }
+    
+    /* Let the VM take the remaining space (right side) */
+    .vm-environment .main-section:has(#link_5 a.active-tab) app-vm,
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) app-vm {
+      flex: 1 1 auto !important;
+      min-width: 420px !important;
+    }
+    
+    /* Keep guideBlock as the left "control pane".
+       IMPORTANT: don't force a fixed width here — CloudLabs sets inline width
+       (and the resizer updates it), so we only set sane min/max. */
+    .vm-environment .main-section:has(#link_5 a.active-tab) #guideBlock,
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) #guideBlock {
+      flex: 0 0 auto !important;
+      min-width: 340px !important;
+      max-width: 65vw !important;
+    }
+    
+    /* Make the resizer easy to grab */
+    .vm-environment .main-section:has(#link_5 a.active-tab) .resizer,
+    .vm-environment .main-section:has(#link_5-dup a.active-tab) .resizer {
+      flex: 0 0 10px !important;
+      cursor: col-resize !important;
+      z-index: 9999 !important;
+    }
+    
+    /* ==========================
+     Always show all top tabs (never collapse into "More")
+     ========================== */
+  
+    /* Force main tabs to be visible even if CloudLabs set inline display:none */
+    ul.resize-tab.ts-tabs-list > li[id^="link_"] {
+      display: inline-block !important;
+    }
+    
+    /* Hide the "More" dropdown container entirely */
+    ul.dropdown-ul.ts-tabs-list,
+    .custom-dropdown-tab,
+    a.more-link,
+    #myTabDrop1,
+    #myTabDrop1-contents {
+      display: none !important;
+    }
+    
+    /* Allow horizontal scroll instead of collapsing */
+    ul.resize-tab.ts-tabs-list {
+      overflow-x: auto !important;
+      white-space: nowrap !important;
+      flex-wrap: nowrap !important;
+    }
+
+</style>
 
 
 <div class="content-container">
